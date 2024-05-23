@@ -14,7 +14,7 @@ const Search = require('./routes/searchReviewRoute')
 app.use(express.json());
 app.use(
   cors({
-    origin: ["https://modnae-website.vercel.app"],
+    origin: "https://modnae-website.vercel.app",
     methods: ["GET", "POST"],
     credentials: true,
     
