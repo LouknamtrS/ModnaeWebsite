@@ -15,7 +15,7 @@ const multer = require('multer')
 app.use(express.json());
 app.use(
   cors({
-    origin: ["http://localhost:5173"],
+    origin: ["modnae-website-bw1x.vercel.app"],
     methods: ["GET", "POST"],
     credentials: true,
   })
@@ -34,6 +34,7 @@ app.use("/",ReadReview)
 app.use("/",Search)
 readdirSync("./routes").map((r)=>app.use("/api",require("./routes/"+r)))
 
+app.get("/",(req,res)=>{res.json("hello")})
 
 
 mongoose.connect(
