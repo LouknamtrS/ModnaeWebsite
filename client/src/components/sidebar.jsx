@@ -269,7 +269,7 @@ export function Sidenav({ onSelectSubject }) {
 
   const handleSearch = () => {
     axios
-      .post("modnae-website-bw1x.vercel.app/Search", { searchSubject })
+      .post("https://modnae-website-bw1x.vercel.app/Search", { searchSubject })
       .then((response) => {
         setResultSearch(response.data);
         console.log(resultSearch);

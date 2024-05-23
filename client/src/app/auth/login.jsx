@@ -33,7 +33,7 @@ export function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("modnae-website-bw1x.vercel.app/api/login", value)
+      .post("https://modnae-website-bw1x.vercel.app/api/login", value)
       .then((response) => {
         dispatch({
           type: "LOGIN",
