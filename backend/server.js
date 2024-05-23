@@ -12,7 +12,7 @@ const WriteReview = require('./routes/writeReviewRoute')
 const ReadReview = require('./routes/readReviewRoute')
 const Search = require('./routes/searchReviewRoute')
 const multer = require('multer')
-
+app.use(cors()) //fetch api
 app.use(
   cors({
     origin: ["https://modnae-website.vercel.app"],
@@ -24,7 +24,7 @@ app.use(express.json());
 //middleware
 app.use(morgan("dev"))
 app.use(bodyParser.json({limit:"20mb"}))
-app.use(cors()) //fetch api
+
 
 //Route
 
