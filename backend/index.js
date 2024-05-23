@@ -7,11 +7,11 @@ require("dotenv").config();
 const bodyParser = require("body-parser")
 const {readdirSync, readvSync} = require("fs")
 const app = express();
-const Topic = require('./routes/topicRoute');
-const WriteReview = require('./routes/writeReviewRoute')
-const ReadReview = require('./routes/readReviewRoute')
-const Search = require('./routes/searchReviewRoute')
-const Api = require('./routes/api')
+const Topic = require('./api/topicRoute');
+const WriteReview = require('./api/writeReviewRoute')
+const ReadReview = require('./api/readReviewRoute')
+const Search = require('./api/searchReviewRoute')
+const Api = require('./api/api')
 app.use(express.json());
 app.use(
   cors({
