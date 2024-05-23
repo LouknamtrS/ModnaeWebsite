@@ -40,7 +40,7 @@ app.get("/",(req,res)=>{res.json("hello")})
 
 
 mongoose.connect(
- "mongodb+srv://modnoy:modnaetuanoy@modnae.olhb5sg.mongodb.net/?retryWrites=true&w=majority&appName=Modnae"
+ "mongodb+srv://modnoy:modnaetuanoy@modnae.olhb5sg.mongodb.net/?retryWrites=true&w=majority&appName=Modnae?directConnection=true"
 );
 
 const connection = mongoose.connection;
