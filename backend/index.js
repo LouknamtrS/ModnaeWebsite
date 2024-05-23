@@ -1,16 +1,16 @@
 
 const express = require("express");
-const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
 const morgan = require("morgan");
 require("dotenv").config();
 const bodyParser = require("body-parser")
 const {readdirSync, readvSync} = require("fs")
-const Topic = require('./topicRoute');
-const WriteReview = require('./writeReviewRoute')
-const ReadReview = require('./readReviewRoute')
-const Search = require('./searchReviewRoute')
+const app = express();
+const Topic = require('./routes/topicRoute');
+const WriteReview = require('./routes/writeReviewRoute')
+const ReadReview = require('./routes/readReviewRoute')
+const Search = require('./routes/searchReviewRoute')
 app.use(express.json());
 app.use(
   cors({
