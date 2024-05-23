@@ -86,7 +86,7 @@ exports.login = async (req,res)=>{
                 }
                return res.send("An Email send to your account");
         }else{
-        return res.status(400).send(data,"User not found")
+        return res.status(400).send("User not found")
         }
 
     }catch(err){
