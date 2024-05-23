@@ -13,14 +13,13 @@ const ReadReview = require('./api/readReviewRoute')
 const Search = require('./api/searchReviewRoute')
 const Api = require('./api/api')
 app.use(express.json());
-app.use(
-  cors({
-    origin: ["https://modnae-website.vercel.app"],
-    methods: ["GET", "POST"],
-    credentials: true,
-    
-  })
-);
+const corsOptions = {
+  origin: 'https://modnae-website.vercel.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+
+app.use(cors(corsOptions));
 
 //middleware
 app.use(morgan("dev"))
