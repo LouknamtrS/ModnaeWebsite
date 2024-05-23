@@ -15,7 +15,7 @@ const multer = require('multer')
 app.use(express.json());
 app.use(
   cors({
-    origin: ["http://localhost:5173"],
+    origin: ["https://modnae-website-bw1x.vercel.app/"],
     methods: ["GET", "POST"],
     credentials: true,
   })
