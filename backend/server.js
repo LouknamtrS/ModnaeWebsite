@@ -5,22 +5,22 @@ const cors = require("cors");
 const morgan = require("morgan");
 require("dotenv").config();
 const bodyParser = require("body-parser")
-const {readirSync, readdirSync} = require("fs")
+const {readdirSync} = require("fs")
 const app = express();
 const Topic = require('./routes/topicRoute');
 const WriteReview = require('./routes/writeReviewRoute')
 const ReadReview = require('./routes/readReviewRoute')
 const Search = require('./routes/searchReviewRoute')
-const multer = require('multer')
-app.use(cors()) //fetch api
+app.use(express.json());
 app.use(
   cors({
     origin: ["https://modnae-website.vercel.app"],
     methods: ["GET", "POST"],
     credentials: true,
+    
   })
 );
-app.use(express.json());
+
 //middleware
 app.use(morgan("dev"))
 app.use(bodyParser.json({limit:"20mb"}))
