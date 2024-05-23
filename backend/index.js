@@ -5,7 +5,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 require("dotenv").config();
 const bodyParser = require("body-parser")
-const {readdirSync} = require("fs")
+const {readdirSync, readvSync} = require("fs")
 const app = express();
 const Topic = require('./routes/topicRoute');
 const WriteReview = require('./routes/writeReviewRoute')
