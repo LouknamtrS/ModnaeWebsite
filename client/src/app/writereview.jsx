@@ -38,7 +38,7 @@ export function WriteReview() {
 
   function handleClick(event) {
     axios
-      .post("http://localhost:5000/WriteReview", {
+      .post("modnae-website-bw1x.vercel.app/WriteReview", {
         email: user.email,
         subject: input.subject,
         year: input.year,
