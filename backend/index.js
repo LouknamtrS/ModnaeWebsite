@@ -16,12 +16,11 @@ const Search = require('./routes/searchReviewRoute')
 const Api = require('./routes/api')
 app.use(express.json());
 
-const corsOptions = {
-  origin: 'https://luxury-alpaca-92b94f.netlify.app',
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-};
-
+const corsOptions ={
+    origin:'http://localhost:5173', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200
+}
 app.use(cors(corsOptions));
 
 //middleware
@@ -35,13 +34,13 @@ app.use("/",Topic)
 app.use("/",WriteReview)
 app.use("/",ReadReview)
 app.use("/",Search)
-// app.use("/api/",Api)
-// // readdirSync("./routes").map((r)=>app.use("/api",require("./routes/"+r)))
+
+readdirSync("./routes").map((r)=>app.use("/api",require("./routes/"+r)))
 
 
 
 mongoose.connect(
- "mongodb+srv://modnoy:modnaetuanoy@modnae.olhb5sg.mongodb.net/?retryWrites=true&w=majority&appName=Modnae"
+ "mongodb+srv://modnoy:modnaetuanoy@modnae.olhb5sg.mongodb.net/modnaeDB"
 );
 
 const connection = mongoose.connection;

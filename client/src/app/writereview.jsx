@@ -38,7 +38,7 @@ export function WriteReview() {
 
   function handleClick(event) {
     axios
-      .post("https://modnaeee.onrender.com/WriteReview", {
+      .post("http://localhost:5000/WriteReview", {
         email: user.email,
         subject: input.subject,
         year: input.year,

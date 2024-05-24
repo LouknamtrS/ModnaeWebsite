@@ -21,7 +21,7 @@ export function ReadReview() {
     const fetchReviews = async () => {
       try {
         const response = await axios.get(
-          `https://modnaeee.onrender.com/ReadReview${
+          `http://localhost:5000/ReadReview${
             selectedSubject ? `?subject=${selectedSubject}` : ""
           }`
         );

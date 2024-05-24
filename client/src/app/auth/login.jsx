@@ -33,7 +33,7 @@ export function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("https://modnaeee.onrender.com/api/login", value)
+      .post("http://localhost:5000/api/login", value)
       .then((response) => {
         dispatch({
           type: "LOGIN",
