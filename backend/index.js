@@ -6,6 +6,8 @@ const morgan = require("morgan");
 require("dotenv").config();
 const bodyParser = require("body-parser")
 const {readdirSync, readvSync} = require("fs")
+const fs = require('fs');
+const path = require('path');
 const app = express();
 const Topic = require('./routes/topicRoute');
 const WriteReview = require('./routes/writeReviewRoute')
@@ -32,10 +34,12 @@ app.use("/",Topic)
 app.use("/",WriteReview)
 app.use("/",ReadReview)
 app.use("/",Search)
-app.use("/api/",Api)
-// readdirSync("./routes").map((r)=>app.use("/api",require("./routes/"+r)))
-
-app.get("/",(req,res)=>{res.json("hello")})
+// app.use("/api/",Api)
+// // readdirSync("./routes").map((r)=>app.use("/api",require("./routes/"+r)))
+fs.readdirSync("./routes").forEach((file) => {
+  const route = require(path.join(__dirname, 'routes', file));
+  app.use("/", route);
+});
 
 
 mongoose.connect(
