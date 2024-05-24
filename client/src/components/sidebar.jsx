@@ -269,7 +269,7 @@ export function Sidenav({ onSelectSubject }) {
 
   const handleSearch = () => {
     axios
-      .post("http://localhost:5000/Search", { searchSubject })
+      .post("https://modnae-m7lm.onrender.com/Search", { searchSubject })
       .then((response) => {
         setResultSearch(response.data);
         console.log(resultSearch);
