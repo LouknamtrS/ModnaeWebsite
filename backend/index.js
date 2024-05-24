@@ -34,12 +34,9 @@ app.use("/",Topic)
 app.use("/",WriteReview)
 app.use("/",ReadReview)
 app.use("/",Search)
-// app.use("/api/",Api)
+app.use("/api/",Api)
 // // readdirSync("./routes").map((r)=>app.use("/api",require("./routes/"+r)))
-fs.readdirSync("./routes").forEach((file) => {
-  const route = require(path.join(__dirname, 'routes', file));
-  app.use("/", route);
-});
+
 
 
 mongoose.connect(
