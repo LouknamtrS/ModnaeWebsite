@@ -17,7 +17,7 @@ const Api = require('./routes/api')
 app.use(express.json());
 
 const corsOptions = {
-  origin: 'https://modnaeee.onrender.com',
+  origin: 'https://luxury-alpaca-92b94f.netlify.app',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 };
