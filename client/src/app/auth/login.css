@@ -172,7 +172,8 @@ body {
 }
 
 @media screen and (max-width: 767px) {
-  .loginPicture {
+  .loginPicture,
+  .registerPicture {
     display: none;
   }
 
