@@ -16,12 +16,14 @@ const Search = require('./routes/searchReviewRoute')
 const Api = require('./routes/api')
 app.use(express.json());
 
-const corsOptions ={
-    origin:'http://localhost:5173', 
+const allowedOrigins = ['https://your-frontend.onrender.com'];
+const options = {
+    origin: allowedOrigins,
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
-}
-app.use(cors(corsOptions));
+};
+
+app.use(cors(options));
 
 //middleware
 app.use(morgan("dev"))
@@ -30,8 +32,9 @@ app.use(morgan("dev"))
 app.get('/',(req,res)=>{
   res.send("hi")
 })
-//Route
-
+app.get('/api/data',(req,res)=>{
+  res.json({message:'hello from backend'});
+});
 app.use("/",Topic)
 app.use("/",WriteReview)
 app.use("/",ReadReview)
@@ -51,6 +54,6 @@ connection.once("open", () => {
 });
 
 
-app.listen(5000, () => {
+app.listen(3000, () => {
   console.log(`Server is running`);
 });
