@@ -57,9 +57,9 @@ export function CommentPanel() {
       }
     };
 
-    if (user.email) {
-      fetchData();
-    }
+    // if (user.email) {
+    //   fetchData();
+    // }
   }, [user.email]);
 
   const thaiDateTimeOptions = {
