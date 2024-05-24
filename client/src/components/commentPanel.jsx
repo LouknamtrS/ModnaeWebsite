@@ -23,14 +23,14 @@ export function CommentPanel() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://modnae-website-bw1x.vercel.app/ReadTopic"
+          "https://modnae-website-gx5o.vercel.app/ReadTopic"
         );
         const reversedTopics = response.data.reverse();
         const topicsWithComments = await Promise.all(
           reversedTopics.map(async (topic) => {
             if (user.email) {
               const likeStatusResponse = await axios.get(
-                `https://modnae-website-bw1x.vercel.app/Topic/like-status/${topic._id}?email=${user.email}`
+                `https://modnae-website-gx5o.vercel.app/Topic/like-status/${topic._id}?email=${user.email}`
               );
               return {
                 ...topic,
@@ -77,7 +77,7 @@ export function CommentPanel() {
 
     try {
       const response = await axios.post(
-        `https://modnae-website-bw1x.vercel.app/Topic/${topicId}/comment`,
+        `https://modnae-website-gx5o.vercel.app/Topic/${topicId}/comment`,
         {
           email: user.email,
           content: commentContent,
@@ -93,7 +93,7 @@ export function CommentPanel() {
   const handleLike = async (topicId) => {
     try {
       const response = await axios.post(
-        `https://modnae-website-bw1x.vercel.app/Topic/like/${topicId}`,
+        `https://modnae-website-gx5o.vercel.app/Topic/like/${topicId}`,
         {
           email: user.email,
         }

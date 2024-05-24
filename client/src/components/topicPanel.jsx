@@ -39,7 +39,7 @@ export const TopicPanel = () => {
 
   function handleClick(event) {
     axios
-      .post("https://modnae-website-bw1x.vercel.app/Topic", {
+      .post("https://modnae-website-gx5o.vercel.app/Topic", {
         email: user.email,
         title: input.title,
         descriptions: input.description,
