@@ -14,7 +14,6 @@ const WriteReview = require('./routes/writeReviewRoute')
 const ReadReview = require('./routes/readReviewRoute')
 const Search = require('./routes/searchReviewRoute')
 const Api = require('./routes/api')
-import {disableReactDevTools} from "@fvilers/disable-react-devtools"
 app.use(express.json());
 
 const corsOptions = {
