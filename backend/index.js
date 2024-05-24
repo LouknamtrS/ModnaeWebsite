@@ -27,7 +27,9 @@ app.use(cors(corsOptions));
 app.use(morgan("dev"))
 
 
-
+app.get('/',(req,res)=>{
+  res.send("hi")
+})
 //Route
 
 app.use("/",Topic)
