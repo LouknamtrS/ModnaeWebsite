@@ -18,7 +18,7 @@ import {disableReactDevTools} from "@fvilers/disable-react-devtools"
 app.use(express.json());
 
 const corsOptions = {
-  origin: 'https://modnae.onrender.com',
+  origin: 'https://modnae-9jc6.onrender.com',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 };
