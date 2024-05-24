@@ -31,7 +31,7 @@ exports.register = async(req,res)=>{
                     userId: user._id,
                     tokens: crypto.randomBytes(32).toString("hex")
                 }).save();
-                const url = `https://modnae-website-gx5o.vercel.app/api/users/${user._id}/verify/${tokens.tokens}`;
+                const url = `https://modnaeee.onrender.com/api/users/${user._id}/verify/${tokens.tokens}`;
                 await sendEmail(user.email, "Verify Email",url);
                 console.log(url);
             }
@@ -82,7 +82,7 @@ exports.login = async (req,res)=>{
                         userId: user._id,
                         tokens: crypto.randomBytes(32).toString("hex")
                     }).save();
-                    const url = `https://modnae-website-gx5o.vercel.app/api/users/${user._id}/verify/${tokens.tokens}`;
+                    const url = `https://modnaeee.onrender.com/api/users/${user._id}/verify/${tokens.tokens}`;
                     await sendEmail(user.email, "ยืนยันการลงทะเบียนเข้าใช้เว็บไซต์ MODNAE",url);
                     
                 }
