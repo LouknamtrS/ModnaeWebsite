@@ -23,14 +23,14 @@ export function CommentPanel() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/ReadTopic"
+          "https://modnae-m7lm.onrender.com/ReadTopic"
         );
         const reversedTopics = response.data.reverse();
         const topicsWithComments = await Promise.all(
           reversedTopics.map(async (topic) => {
             if (user.email) {
               const likeStatusResponse = await axios.get(
-                `http://localhost:5000/Topic/like-status/${topic._id}?email=${user.email}`
+                `https://modnae-m7lm.onrender.com/Topic/like-status/${topic._id}?email=${user.email}`
               );
               return {
                 ...topic,
@@ -77,7 +77,7 @@ export function CommentPanel() {
 
     try {
       const response = await axios.post(
-        `http://localhost:5000/Topic/${topicId}/comment`,
+        `https://modnae-m7lm.onrender.com/Topic/${topicId}/comment`,
         {
           email: user.email,
           content: commentContent,
@@ -93,7 +93,7 @@ export function CommentPanel() {
   const handleLike = async (topicId) => {
     try {
       const response = await axios.post(
-        `http://localhost:5000/Topic/like/${topicId}`,
+        `https://modnae-m7lm.onrender.com/Topic/like/${topicId}`,
         {
           email: user.email,
         }
