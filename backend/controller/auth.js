@@ -35,7 +35,7 @@ exports.register = async(req,res)=>{
                 await sendEmail(user.email, "Verify Email",url);
                 console.log(url);
             }
-            return res.send("An Email send to your account");
+            return res.status(200).send("An Email send to your account");
         }
 
     }catch(err){
@@ -72,8 +72,9 @@ exports.login = async (req,res)=>{
             {expiresIn: '7d'},
             (err,token)=>{
                 if(err) throw err;
-                res.json({token,payload})
+                res.status(200).json({token,payload})
             })
+            res.status(200)
         }else if(user && !user.verify){
             let tokens = await Token.findOne({userId: user._id});
                 if(!tokens){
@@ -83,8 +84,9 @@ exports.login = async (req,res)=>{
                     }).save();
                     const url = `https://modnae-website-bw1x.vercel.app/api/users/${user._id}/verify/${tokens.tokens}`;
                     await sendEmail(user.email, "ยืนยันการลงทะเบียนเข้าใช้เว็บไซต์ MODNAE",url);
+                    
                 }
-               return res.send("An Email send to your account");
+               return res.status(200).send("An Email send to your account");
         }else{
         return res.status(400).send("User not found")
         }
@@ -100,7 +102,7 @@ exports.currentUser = async(req,res)=>{
         console.log('controller',req.user);
         const user = await User.findOne({email:req.user.email}).select("-password").exec();
         console.log('user',user);
-        res.send(user);
+        res.status(200).send(user);
     }catch(err){
         console.log(err);
         res.status(500).send("Server error");
@@ -152,7 +154,7 @@ exports.updateUser = async(req,res)=>{
             await User.updateOne({email: email}, {
                 password: encryptedPassword, 
             });
-            res.send("Edit user")
+            res.status(200).send("Edit user")
         }catch(err){
             console.log(err)
             res.status(500).send("Server Error")
