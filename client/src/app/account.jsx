@@ -21,7 +21,7 @@ export const Account = () => {
     let pass_new = e.target.elements["new_password"].value;
     if (pass_new === e.target.elements["confirm_password"].value) {
       axios
-        .post("https://modnae-website-bw1x.vercel.app/api/updateUser", {
+        .post("https://modnae-website-gx5o.vercel.app/api/updateUser", {
           email: user.email,
           password: currpass,
           newpassword: pass_new,

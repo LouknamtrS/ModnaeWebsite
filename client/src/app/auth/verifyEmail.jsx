@@ -10,7 +10,7 @@ export function EmailVerify() {
   useEffect(() => {
     const verifyEmailUrl = async () => {
       try {
-        const url = `https://modnae-website-bw1x.vercel.app/api/users/${params.id}/verify/${params.tokens}`;
+        const url = `https://modnae-website-gx5o.vercel.app/api/users/${params.id}/verify/${params.tokens}`;
         const { data } = await axios.get(url);
         console.log(data);
         setValidUrl(true);
