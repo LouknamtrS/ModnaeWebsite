@@ -15,6 +15,7 @@ const ReadReview = require('./routes/readReviewRoute')
 const Search = require('./routes/searchReviewRoute')
 const Api = require('./routes/api')
 app.use(express.json());
+
 const corsOptions = {
   origin: 'https://modnae-website.vercel.app',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -25,7 +26,7 @@ app.use(cors(corsOptions));
 
 //middleware
 app.use(morgan("dev"))
-app.use(bodyParser.json({limit:"20mb"}))
+
 
 
 //Route
@@ -34,7 +35,7 @@ app.use("/",Topic)
 app.use("/",WriteReview)
 app.use("/",ReadReview)
 app.use("/",Search)
-app.use("/api/",Api)
+// app.use("/api/",Api)
 // // readdirSync("./routes").map((r)=>app.use("/api",require("./routes/"+r)))
 
 
