@@ -16,7 +16,7 @@ const Search = require('./routes/searchReviewRoute')
 const Api = require('./routes/api')
 app.use(express.json());
 
-const allowedOrigins = ['https://your-frontend.onrender.com'];
+const allowedOrigins = ['https://modnae-frontend.onrender.com'];
 const options = {
     origin: allowedOrigins,
     // credentials:true,            //access-control-allow-credentials:true
