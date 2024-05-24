@@ -21,7 +21,7 @@ export const Account = () => {
     let pass_new = e.target.elements["new_password"].value;
     if (pass_new === e.target.elements["confirm_password"].value) {
       axios
-        .post("http://localhost:5000/api/updateUser", {
+        .post("https://modnae-m7lm.onrender.com/api/updateUser", {
           email: user.email,
           password: currpass,
           newpassword: pass_new,

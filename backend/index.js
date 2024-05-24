@@ -17,7 +17,7 @@ const Api = require('./routes/api')
 app.use(express.json());
 
 const corsOptions ={
-    origin:'https://modnaewebsite.onrender.com', 
+    origin:'http://localhost:5173', 
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }

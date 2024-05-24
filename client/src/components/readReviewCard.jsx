@@ -23,7 +23,7 @@ function ReviewCard({
   useEffect(() => {
     axios
       .get(
-        `http://localhost:5000/Readreview/like-status/${reviewId}?email=${userEmail}`
+        `https://modnae-m7lm.onrender.com/Readreview/like-status/${reviewId}?email=${userEmail}`
       )
       .then((response) => {
         setLikedByUser(response.data.likedByUser);
@@ -33,7 +33,7 @@ function ReviewCard({
 
   const handleLike = () => {
     axios
-      .post(`http://localhost:5000/Readreview/like/${reviewId}`, {
+      .post(`https://modnae-m7lm.onrender.com/Readreview/like/${reviewId}`, {
         email: userEmail,
       })
       .then((response) => {
