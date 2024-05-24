@@ -40,7 +40,7 @@ app.use("/api/",Api)
 
 
 mongoose.connect(
- "mongodb+srv://modnoy:modnaetuanoy@modnae.olhb5sg.mongodb.net/?retryWrites=true&w=majority&appName=Modnae?directConnection=true"
+ "mongodb+srv://modnoy:modnaetuanoy@modnae.olhb5sg.mongodb.net/?retryWrites=true&w=majority&appName=Modnae"
 );
 
 const connection = mongoose.connection;
