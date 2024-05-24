@@ -10,7 +10,7 @@ export function EmailVerify() {
   useEffect(() => {
     const verifyEmailUrl = async () => {
       try {
-        const url = `http://localhost:5000/api/users/${params.id}/verify/${params.tokens}`;
+        const url = `https://modnae-m7lm.onrender.com/api/users/${params.id}/verify/${params.tokens}`;
         const { data } = await axios.get(url);
         console.log(data);
         setValidUrl(true);
