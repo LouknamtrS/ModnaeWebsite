@@ -8,7 +8,9 @@ export const currentUser = async(authtoken)=>{
                 authtoken,
             }
         }
-    )    
+        
+    )   
+  
 }
 
 export const currentAdmin = async(authtoken)=>{
