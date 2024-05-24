@@ -47,7 +47,7 @@ export function Register() {
       setLog("รหัสผ่านไม่ตรงกัน");
     } else {
       axios
-        .post("https://modnae-website-gx5o.vercel.app/api/register", value)
+        .post("https://modnaeee.onrender.com/api/register", value)
         .then((response) => {
           console.log(response);
           setLog("กรุณาตรวจสอบกล่องจดหมายเข้าในอีเมลของคุณ");

@@ -21,7 +21,7 @@ export function ReadReview() {
     const fetchReviews = async () => {
       try {
         const response = await axios.get(
-          `https://modnae-website-gx5o.vercel.app/ReadReview${
+          `https://modnaeee.onrender.com/ReadReview${
             selectedSubject ? `?subject=${selectedSubject}` : ""
           }`
         );

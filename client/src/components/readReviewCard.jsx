@@ -23,7 +23,7 @@ function ReviewCard({
   useEffect(() => {
     axios
       .get(
-        `https://modnae-website-gx5o.vercel.app/Readreview/like-status/${reviewId}?email=${userEmail}`
+        `https://modnaeee.onrender.com/Readreview/like-status/${reviewId}?email=${userEmail}`
       )
       .then((response) => {
         setLikedByUser(response.data.likedByUser);
@@ -33,7 +33,7 @@ function ReviewCard({
 
   const handleLike = () => {
     axios
-      .post(`https://modnae-website-gx5o.vercel.app/Readreview/like/${reviewId}`, {
+      .post(`https://modnaeee.onrender.com/Readreview/like/${reviewId}`, {
         email: userEmail,
       })
       .then((response) => {
