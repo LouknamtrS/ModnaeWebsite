@@ -19,8 +19,8 @@ app.use(express.json());
 const allowedOrigins = ['https://your-frontend.onrender.com'];
 const options = {
     origin: allowedOrigins,
-    credentials:true,            //access-control-allow-credentials:true
-    optionSuccessStatus:200
+    // credentials:true,            //access-control-allow-credentials:true
+    // optionSuccessStatus:200
 };
 
 app.use(cors(options));
