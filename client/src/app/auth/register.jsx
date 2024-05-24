@@ -47,7 +47,7 @@ export function Register() {
       setLog("รหัสผ่านไม่ตรงกัน");
     } else {
       axios
-        .post("http://localhost:5000/api/register", value)
+        .post("https://modnae-m7lm.onrender.com/api/register", value)
         .then((response) => {
           console.log(response);
           setLog("กรุณาตรวจสอบกล่องจดหมายเข้าในอีเมลของคุณ");
