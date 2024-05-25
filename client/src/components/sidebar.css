@@ -7,7 +7,7 @@
   background-color: #81bfa1;
   display: flex;
   flex-direction: column;
-  border-radius: 1rem 1rem 0rem 0rem;
+  border-radius: 1rem 1rem;
   padding: 0;
   margin: 0.7rem 0 0.7rem 0.7rem;
 }
@@ -181,10 +181,11 @@
 .hide-btn {
   z-index: 1;
   display: block;
-  height: 50px;
+  height: 70px;
   background-color: #81bfa1;
   border: none;
-  margin: 2rem 0 0.7rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+  margin: 2.3rem 0 0.7rem;
   cursor: pointer;
 }
 
@@ -196,20 +197,18 @@
   }
   .sidenav {
     display: none;
-    height: 100%;
+    height: 70%;
     padding: 0;
     margin: 0.7rem 0 0.7rem 0.7rem;
   }
-  .hide-btn {
+  .hide-btn.active {
     display: block;
-    height: 50px;
-    background-color: #81bfa1;
-    border: none;
-    margin: 2rem 0 0.7rem;
     cursor: pointer;
+    position: fixed;
   }
+
   .side-w-btn {
-    position: absolute;
+    position: fixed;
     display: flex;
     height: 100%;
   }
