@@ -10,7 +10,7 @@ const tokenSchema = new mongoose.Schema(
 
     },
     tokens:{type:String, require: true},
-    createAt:{type:Date, default:Date.now(),expires:3600} //1hours
+    createAt:{type:Date, default:Date.now(),expires:86400} //1hours
 }
 );
 
