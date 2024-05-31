@@ -32,7 +32,7 @@ exports.register = async(req,res)=>{
                     tokens: crypto.randomBytes(32).toString("hex")
                 }).save();
                 const url = `https://modnae-m7lm.onrender.com/api/users/${user._id}/verify/${tokens.tokens}`;
-                await sendEmail(user.email, "Verify Email",url);
+                await sendEmail(user.email, "ยืนยันการลงทะเบียนเข้าใช้เว็บไซต์ MODNAE",url);
                 console.log(url);
             }
             return res.status(200).send("An Email send to your account");
