@@ -125,7 +125,7 @@ exports.verifyUser = async(req,res)=>{
         await tokens.deleteOne()
         res.status(200).send("Email veryfied")
     }catch(err){
-        res.status(500).send(err,"Server error jaa");
+        res.status(500).send(err,"Server error");
 }
 }
 
