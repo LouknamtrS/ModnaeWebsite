@@ -57,7 +57,7 @@ router.route('/Readreview/like-status/:reviewId').get(async (req, res) => {
     const reviewId = req.params.reviewId;
     const email = req.query.email;
 
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email:email });
     if (!user) {
       return res.status(404).send('User not found');
     }
@@ -69,11 +69,11 @@ router.route('/Readreview/like-status/:reviewId').get(async (req, res) => {
 
     // เช็คว่าไลก์หรือยัง
     const likedByUser = review.likedBy.includes(user._id);
-
     res.json({ likedByUser });
   } catch (error) {
     console.error('Error fetching like status:', error);
     res.status(500).json('Internal Server Error');
   }
 });
+
 module.exports = router;
