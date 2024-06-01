@@ -33,7 +33,7 @@ exports.register = async(req,res)=>{
                 }).save();
                 const url = `https://modnae-m7lm.onrender.com/api/users/${user._id}/verify/${tokens.tokens}`;
                 await sendEmail(user.email, "ยืนยันการลงทะเบียนเข้าใช้เว็บไซต์ MODNAE",url);
-                console.log(url);
+                // console.log(url);
             }
             return res.status(200).send("An Email send to your account");
         }
@@ -101,10 +101,10 @@ exports.currentUser = async(req,res)=>{
     try{
         console.log('controller',req.user);
         const user = await User.findOne({email:req.user.email}).select("-password").exec();
-        console.log('user',user);
+        // console.log('user',user);
         res.status(200).send(user);
     }catch(err){
-        console.log(err);
+        // console.log(err);
         res.status(500).send("Server error");
     }
 }
