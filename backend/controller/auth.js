@@ -1,8 +1,8 @@
 
-const bcrypt = require('bcryptjs')
-const User = require("../models/User")
+const bcrypt = require('bcryptjs');
+const User = require("../models/User");
 const jwt = require("jsonwebtoken");
-const Token = require("../models/token")
+const Token = require("../models/token");
 const crypto = require("crypto");
 const { useReducer } = require('react');
 const sendEmail = require('../sendEmail.js');
@@ -14,7 +14,8 @@ exports.register = async(req,res)=>{
         let user = await User.findOne({email})
         if(user){
             return res.status(400).send("User Already exists");
-        }const salt = await bcrypt.genSalt(10)
+        }
+        const salt = await bcrypt.genSalt(10)
         user = new User({
             username,
             firstname,
@@ -25,21 +26,26 @@ exports.register = async(req,res)=>{
         user.password = await bcrypt.hash(password, salt);
         user = await user.save();
         if(!user.verify){
-            let tokens = await Token.findOne({userId: user._id});
-            if(!tokens){
-                const tokens = await new Token({
-                    userId: user._id,
-                    tokens: crypto.randomBytes(32).toString("hex")
-                }).save();
-                const url = `https://modnae-frontend.onrender.com/api/users/${user._id}/verify/${tokens.tokens}`;
-                await sendEmail(user.email, "ยืนยันการลงทะเบียนเข้าใช้เว็บไซต์ MODNAE",url);
-                // console.log(url);
+            try{
+                let tokens = await Token.findOne({userId: user._id});
+                if(!tokens){
+                    const tokens = await new Token({
+                        userId: user._id,
+                        tokens: crypto.randomBytes(32).toString("hex")
+                    }).save();
+                    const url = `https://modnae-frontend.onrender.com/api/users/${user._id}/verify/${tokens.tokens}`;
+                    await sendEmail(user.email, "ยืนยันการลงทะเบียนเข้าใช้เว็บไซต์ MODNAE",url);
+                    // console.log(url);
+                }
+                return res.status(200).send("An Email send to your account");   
+            }catch(err){
+                return res.status(400)
             }
-            return res.status(200).send("An Email send to your account");
+
         }
 
     }catch(err){
-        console.log(err)
+        // console.log(err)
         res.status(500).send("Server Error")
     }
 }
@@ -76,7 +82,8 @@ exports.login = async (req,res)=>{
             })
             res.status(200)
         }else if(user && !user.verify){
-            let tokens = await Token.findOne({userId: user._id});
+            try{
+                           let tokens = await Token.findOne({userId: user._id});
                 if(!tokens){
                     const tokens = await new Token({
                         userId: user._id,
@@ -86,7 +93,11 @@ exports.login = async (req,res)=>{
                     await sendEmail(user.email, "ยืนยันการลงทะเบียนเข้าใช้เว็บไซต์ MODNAE",url);
                     
                 }
-               return res.status(200).send("An Email send to your account");
+               return res.status(200).send("An Email send to your account"); 
+            }catch(err){
+                return res.status(400)
+            }
+
         }else{
         return res.status(400).send("User not found")
         }
