@@ -2,11 +2,15 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const morgan = require("morgan");
-require("dotenv").config();
+const path = require("path");
+require("dotenv").config({
+  path: process.env.NODE_ENV === "production"
+    ? path.resolve(__dirname, ".env")
+    : path.resolve(__dirname, ".env.local")
+});
 const bodyParser = require("body-parser")
 const {readdirSync, readvSync} = require("fs")
 const fs = require('fs');
-const path = require('path');
 const app = express();
 const Topic = require('./routes/topicRoute');
 const WriteReview = require('./routes/writeReviewRoute')
@@ -42,7 +46,7 @@ app.use("/",Search)
 readdirSync("./routes").map((r)=>app.use("/api",require("./routes/"+r)))
 
 mongoose.connect(
-    process.env.MONGODB,
+  process.env.MONGODB,
 )
 .then(() => {
   console.log("MongoDB connected");
