@@ -33,13 +33,14 @@ exports.register = async(req,res)=>{
                         userId: user._id,
                         tokens: crypto.randomBytes(32).toString("hex")
                     }).save();
-                    const url = `https://modnae-frontend.onrender.com/api/users/${user._id}/verify/${tokens.tokens}`;
+                    const url = `${process.env.BASE_URL}api/users/${user._id}/verify/${tokens.tokens}`;
                     await sendEmail(user.email, "ยืนยันการลงทะเบียนเข้าใช้เว็บไซต์ MODNAE",url);
                     // console.log(url);
                 }
                 return res.status(200).send("An Email send to your account");   
             }catch(err){
-                return res.status(400)
+                console.log("EMAIL ERROR:", err);
+                return res.status(400).send("Email failed");
             }
 
         }
@@ -54,7 +55,7 @@ exports.register = async(req,res)=>{
 exports.login = async (req,res)=>{
     try{
         const { email, password} = req.body;
-        var user = await User.findOneAndUpdate({email},{new:true});
+        var user = await User.findOne({ email });
         if(user && user.verify){
             //check password
             const isMatch = await bcrypt.compare(password, user.password);
@@ -83,21 +84,21 @@ exports.login = async (req,res)=>{
             res.status(200)
         }else if(user && !user.verify){
             try{
-                           let tokens = await Token.findOne({userId: user._id});
+                let tokens = await Token.findOne({userId: user._id});
                 if(!tokens){
                     const tokens = await new Token({
                         userId: user._id,
                         tokens: crypto.randomBytes(32).toString("hex")
                     }).save();
-                    const url = `https://modnae-frontend.onrender.com/api/users/${user._id}/verify/${tokens.tokens}`;
+                    const url = `${process.env.BASE_URL}api/users/${user._id}/verify/${tokens.tokens}`;
                     await sendEmail(user.email, "ยืนยันการลงทะเบียนเข้าใช้เว็บไซต์ MODNAE",url);
                     
                 }
                return res.status(200).send("An Email send to your account"); 
             }catch(err){
-                return res.status(400)
+                console.log("EMAIL ERROR:", err);
+                return res.status(400).send("Email failed");
             }
-
         }else{
         return res.status(400).send("User not found")
         }

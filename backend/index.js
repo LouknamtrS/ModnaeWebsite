@@ -1,4 +1,3 @@
-
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -16,14 +15,14 @@ const Search = require('./routes/searchReviewRoute')
 const Api = require('./routes/api')
 app.use(express.json());
 
-const allowedOrigins = ['https://modnae-frontend.onrender.com'];
+const allowedOrigins = ['http://localhost:5173'];
 const options = {
     origin: allowedOrigins,
     // credentials:true,            //access-control-allow-credentials:true
     // optionSuccessStatus:200
 };
 
-app.use(cors(options));
+app.use(cors(options))
 
 //middleware
 app.use(morgan("dev"))
@@ -42,18 +41,15 @@ app.use("/",Search)
 
 readdirSync("./routes").map((r)=>app.use("/api",require("./routes/"+r)))
 
-
-
 mongoose.connect(
- "mongodb+srv://modnoy:modnaetuanoy@modnae.olhb5sg.mongodb.net/modnaeDB"
-);
-
-const connection = mongoose.connection;
-connection.once("open", () => {
-    console.log("MongoDB database connected.");
-});
-
-
-app.listen(3000, () => {
-  console.log(`Server is running`);
+    process.env.MONGODB,
+)
+.then(() => {
+  console.log("MongoDB connected");
+  app.listen(process.env.PORT || 3000, () => {
+    console.log(`Server running on port ${process.env.PORT || 3000}`);
+  });
+})
+.catch((err) => {
+  console.error("MongoDB connection error:", err);
 });
