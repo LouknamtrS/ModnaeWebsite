@@ -15,10 +15,10 @@ const Search = require('./routes/searchReviewRoute')
 const Api = require('./routes/api')
 app.use(express.json());
 
-const allowedOrigins = ['http://localhost:5173'];
+const allowedOrigins = [process.env.FRONTEND_URL];
 const options = {
     origin: allowedOrigins,
-    // credentials:true,            //access-control-allow-credentials:true
+    credentials:true,            //access-control-allow-credentials:true
     // optionSuccessStatus:200
 };
 
